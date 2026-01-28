@@ -1,7 +1,7 @@
-export const loggerMiddleware = (req, res) => {
+export const loggerMiddleware = (str) => {
    const currentDate = new Date();
    const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()} @ ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`;
 
-   console.log(`loggerMiddleware timestamp...${formattedDate}`);
+   console.log(`loggerMiddleware..${str}...${formattedDate}`);
 
 }

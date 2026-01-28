@@ -1,0 +1,9 @@
+{
+  "name": "nodejs-simple-server",
+  "version": "1.0.0",
+  "description": "Node.js application",
+  "main": "server.js",
+  "repository": "https://github.com/MAbdurahman/nodejs-simple-server.git",
+  "author": "Mahdi Abdurrahman <mdbdrrhm@gmail.com>",
+  "license": "MIT"
+}

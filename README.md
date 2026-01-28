@@ -22,20 +22,20 @@ yarn or yarn install
 ```
 then
 ```shell
-npm run start
+npm run server
 ```
 or
 
 ```shell
-yarn start
+yarn server
 ```
 
-### Build the app
+### Run production mode
 ```shell
-npm run build
+npm run prod
 ```
 or
 
 ```shell
-yarn build
+yarn prod
 ```

@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
          // End the response
          res.end(data);
          // Send the loggerMiddleware response
-         return loggerMiddleware('Home page requested.')
+         return loggerMiddleware('Home page requested.'.green.bold.italic)
 
       });
    } else if (req.method === 'GET' && req.url === '/about') {
@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
          if (err) {
             res.statusCode = 500;
             res.setHeader('Content-Type', 'text/plain');
-            res.end('500 Internal Server Error.'.red);
+            res.end('500 Internal Server Error.'.red.bold);
             return;
          }
          res.statusCode = 200;
@@ -51,7 +51,7 @@ const server = http.createServer((req, res) => {
          // End the response
          res.end(data);
          // Send the loggerMiddleware response
-         loggerMiddleware('About page requested.');
+         loggerMiddleware('About page requested.'.green.bold.italic);
 
       });
    } else if (req.method === 'GET' && req.url === '/contact') {
@@ -70,29 +70,30 @@ const server = http.createServer((req, res) => {
          // End the response
          res.end(data);
          // Send the loggerMiddleware response
-        loggerMiddleware('Contact page requested.');
+        loggerMiddleware('Contact page requested.'.green.bold.italic);
 
       });
    } else {
-      // Reads the content of your HTML file asynchronously
-      const filePath = path.join(__dirname, './pages/NotFound.html');
-      fs.readFile(filePath, 'utf8', (err, data) => {
-         if (err) {
-            res.statusCode = 500;
-            res.setHeader('Content-Type', 'text/plain');
-            res.end('500 Internal Server Error'.red);
-            return;
-         }
-         res.statusCode = 404;
-         // Set the content type of the response
-         res.setHeader('Content-Type', 'text/html')
-         // End the response
-         res.end(data);
-         // Send the loggerMiddleware response
-         return loggerMiddleware('404 Not Found.');
-      });
-   }
-})
+         // Reads the content of your HTML file asynchronously
+         const filePath = path.join(__dirname, './pages/notFound.html');
+         fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+               res.statusCode = 500;
+               res.setHeader('Content-Type', 'text/plain');
+               res.end('500 Internal Server Error'.red.bold);
+               return;
+            }
+            res.statusCode = 200;
+            // Set the content type of the response
+            res.setHeader('Content-Type', 'text/html');
+            // End the response
+            res.end(data);
+            // Send the loggerMiddleware response
+            loggerMiddleware('Not found page'.red.bold.italic);
+
+         });
+      }
+});
 /********************************** server listening *********************************/
 server.listen(PORT, () => {
    console.log(`  ➔  Server:  Listening at ${BACKEND_URL}:${PORT} in ${NODE_ENV} mode!`.yellow.bold);

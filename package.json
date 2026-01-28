@@ -5,5 +5,17 @@
   "main": "server.js",
   "repository": "https://github.com/MAbdurahman/nodejs-simple-server.git",
   "author": "Mahdi Abdurrahman <mdbdrrhm@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "server": "SET NODE_ENV=development& nodemon server.js",
+    "prod": "SET NODE_ENV=production& node server.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "nodemon": "^3.1.11"
+  },
+  "nodemonConfig": {
+    "delay": 2000
+  }
 }

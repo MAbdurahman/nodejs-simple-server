@@ -16,7 +16,7 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost';
 
 /*********************************** create server ***********************************/
 const server = http.createServer((req, res) => {
-   if (req.method === 'GET' && req.url === '/') {
+   if (req.url === '/') {
       // Reads the content of your HTML file asynchronously
       const filePath = path.join(__dirname, './pages/index.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
@@ -29,13 +29,13 @@ const server = http.createServer((req, res) => {
          res.statusCode = 200;
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
+         // Send the loggerMiddleware response
+         loggerMiddleware('Home page requested.'.green.bold.italic);
          // End the response
          res.end(data);
-         // Send the loggerMiddleware response
-         return loggerMiddleware('Home page requested.'.green.bold.italic)
 
       });
-   } else if (req.method === 'GET' && req.url === '/about') {
+   } else if (req.url === '/about') {
       // Reads the content of your HTML file asynchronously
       const filePath = path.join(__dirname, './pages/about.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
@@ -48,13 +48,13 @@ const server = http.createServer((req, res) => {
          res.statusCode = 200;
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
-         // End the response
-         res.end(data);
          // Send the loggerMiddleware response
          loggerMiddleware('About page requested.'.green.bold.italic);
+         // End the response
+         res.end(data);
 
       });
-   } else if (req.method === 'GET' && req.url === '/contact') {
+   } else if (req.url === '/contact') {
       // Reads the content of your HTML file asynchronously
       const filePath = path.join(__dirname, './pages/contact.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
@@ -67,13 +67,14 @@ const server = http.createServer((req, res) => {
          res.statusCode = 200;
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
+         // Send the loggerMiddleware response
+         loggerMiddleware('Contact page requested.'.green.bold.italic);
          // End the response
          res.end(data);
-         // Send the loggerMiddleware response
-        loggerMiddleware('Contact page requested.'.green.bold.italic);
 
       });
    } else {
+      if (req.url !== '*') {
          // Reads the content of your HTML file asynchronously
          const filePath = path.join(__dirname, './pages/notFound.html');
          fs.readFile(filePath, 'utf8', (err, data) => {
@@ -83,16 +84,17 @@ const server = http.createServer((req, res) => {
                res.end('500 Internal Server Error'.red.bold);
                return;
             }
-            res.statusCode = 200;
+            res.statusCode = 404;
             // Set the content type of the response
             res.setHeader('Content-Type', 'text/html');
-            // End the response
-            res.end(data);
             // Send the loggerMiddleware response
             loggerMiddleware('Not found page'.red.bold.italic);
-
+            // End the response
+            res.end(data);
          });
+
       }
+   }
 });
 /********************************** server listening *********************************/
 server.listen(PORT, () => {

@@ -74,26 +74,23 @@ const server = http.createServer((req, res) => {
 
       });
    } else {
-      if (req.url !== '*') {
-         // Reads the content of your HTML file asynchronously
-         const filePath = path.join(__dirname, './pages/notFound.html');
-         fs.readFile(filePath, 'utf8', (err, data) => {
-            if (err) {
-               res.statusCode = 500;
-               res.setHeader('Content-Type', 'text/plain');
-               res.end('500 Internal Server Error'.red.bold);
-               return;
-            }
-            res.statusCode = 404;
-            // Set the content type of the response
-            res.setHeader('Content-Type', 'text/html');
-            // Send the loggerMiddleware response
-            loggerMiddleware('Not found page'.red.bold.italic);
-            // End the response
-            res.end(data);
-         });
-
-      }
+      // Reads the content of your HTML file asynchronously
+      const filePath = path.join(__dirname, './pages/notFound.html');
+      fs.readFile(filePath, 'utf8', (err, data) => {
+         if (err) {
+            res.statusCode = 500;
+            res.setHeader('Content-Type', 'text/plain');
+            res.end('500 Internal Server Error'.red.bold);
+            return;
+         }
+         res.statusCode = 404;
+         // Set the content type of the response
+         res.setHeader('Content-Type', 'text/html');
+         // Send the loggerMiddleware response
+         loggerMiddleware('Not found page'.red.bold.italic);
+         // End the response
+         res.end(data);
+      });
    }
 });
 /********************************** server listening *********************************/

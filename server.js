@@ -17,7 +17,7 @@ const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost';
 /*********************************** create server ***********************************/
 const server = http.createServer((req, res) => {
    if (req.url === '/') {
-      // Reads the content of your HTML file asynchronously
+      // Reads the content of the HTML file asynchronously
       const filePath = path.join(__dirname, './pages/index.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
          if (err) {
@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
 
       });
    } else if (req.url === '/about') {
-      // Reads the content of your HTML file asynchronously
+      // Reads the content of the HTML file asynchronously
       const filePath = path.join(__dirname, './pages/about.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
          if (err) {
@@ -55,7 +55,7 @@ const server = http.createServer((req, res) => {
 
       });
    } else if (req.url === '/contact') {
-      // Reads the content of your HTML file asynchronously
+      // Reads the content of the HTML file asynchronously
       const filePath = path.join(__dirname, './pages/contact.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
          if (err) {
@@ -74,7 +74,7 @@ const server = http.createServer((req, res) => {
 
       });
    } else {
-      // Reads the content of your HTML file asynchronously
+      // Reads the content of the HTML file asynchronously
       const filePath = path.join(__dirname, './pages/notFound.html');
       fs.readFile(filePath, 'utf8', (err, data) => {
          if (err) {

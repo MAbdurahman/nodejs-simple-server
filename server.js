@@ -11,7 +11,7 @@ colors.enabled = true;
 /*********************************** variables ***********************************/
 const PORT = process.env.PORT || 5000;
 const NODE_ENV = process.env.NODE_ENV || 'development';
-const ADDENDUM = `\t\t...press Ctrl+C to terminate.\n`.white;
+const ADDENDUM = `\t\t...press Ctrl+C to terminate.\n`.bold.white;
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost';
 
 /*********************************** create server ***********************************/
@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
          // Send the loggerMiddleware response
-         loggerMiddleware('Home page requested.'.green.bold.italic);
+         loggerMiddleware(req, res);
          // End the response
          res.end(data);
 
@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
          // Send the loggerMiddleware response
-         loggerMiddleware('About page requested.'.green.bold.italic);
+         loggerMiddleware(req, res);
          // End the response
          res.end(data);
 
@@ -68,7 +68,7 @@ const server = http.createServer((req, res) => {
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
          // Send the loggerMiddleware response
-         loggerMiddleware('Contact page requested.'.green.bold.italic);
+         loggerMiddleware(req, res);
          // End the response
          res.end(data);
 
@@ -87,7 +87,7 @@ const server = http.createServer((req, res) => {
          // Set the content type of the response
          res.setHeader('Content-Type', 'text/html');
          // Send the loggerMiddleware response
-         loggerMiddleware('Not found page'.red.bold.italic);
+         loggerMiddleware(req, res);
          // End the response
          res.end(data);
       });

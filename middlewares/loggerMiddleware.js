@@ -1,10 +1,10 @@
 const colors = require('colors');
 colors.enabled = true;
 
-exports.loggerMiddleware = (str) => {
+exports.loggerMiddleware = (req, res) => {
    const currentDate = new Date();
-   const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()} @ ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`.bold.italic.blue;
+   const formattedDate = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()} @ ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}`.bold.italic.yellow;
 
-   console.log(`loggerMiddleware..${str}...${formattedDate}`.bold.italic.blue);
+   console.log(`method: ${req.method}  url: ${req.url}  ${res.statusCode} timestamp: ${formattedDate}`.bold.italic.yellow);
 
 }
